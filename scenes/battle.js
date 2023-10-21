@@ -116,6 +116,23 @@ function setBattle(worldState) {
         )
     }
 
+    function increaseHealth(healthBar, healthHealed) {
+        tween(
+            healthBar.width,
+            healthBar.width + healthHealed + 40,
+            0.5,
+            (val) => {
+                healthBar.width = val
+                if(healthBar.width>=370) {
+                    healthBar.width = 370
+                    content.text = "MUSHROOM is at max health."
+                }
+            },
+            easings.easeInSine
+        )
+
+    }
+
     function makeMonFlash(mon) {
         tween(
             mon.opacity,
@@ -136,8 +153,32 @@ function setBattle(worldState) {
         if (playerMon.fainted || enemyMon.fainted) return
 
         if (phase === 'player-selection') {
-            content.text = '> Tackle'
+            let move = 1
+            content.text = '> Bite     Eat a Snack'
             phase = 'player-turn'
+
+            onKeyPress('right', () => {
+                move = 2
+                content.text = '  Bite   > Eat a Snack'
+                phase = 'player-turn2'
+
+            })
+            onKeyPress('left', () => {
+                move = 1
+                content.text = '> Bite     Eat a Snack'
+                phase = 'player-turn'
+
+            })
+            // onKeyPress('up', () => {
+            //     if (move === 1) {
+            //         content.text = 'O Bite     Eat a Snack'
+            //         phase = 'player-turn'
+            //     }
+            //     else if (move=== 2) {
+            //         content.text = '  Bite   O Eat a Snack'
+            //         phase = 'player-turn2'
+            //     }
+            // })
             return
         }
 
@@ -146,7 +187,7 @@ function setBattle(worldState) {
             const damageDealt = Math.random() * 230
 
             if (damageDealt > 150) {
-                content.text = "It's a critical hit!"
+                content.text = worldState.enemyName.toUpperCase() + ' attacks! ' + "It's a critical hit!"
             }
 
             reduceHealth(playerMonHealthBar, damageDealt)
@@ -156,13 +197,14 @@ function setBattle(worldState) {
             return
         }
 
+        // player attack move prompt
         if (phase === 'player-turn') {
-            const damageDealt = Math.random() * 230
+            const damageDealt = Math.random() * 170 + 20
 
             if (damageDealt > 150) {
-                content.text = "It's a critical hit!"
+                content.text = 'MUSHROOM bit '+worldState.enemyName.toUpperCase()+" IN THE FACE."
             } else {
-                content.text = 'MUSHROOM used tackle.'
+                content.text = 'MUSHROOM bit '+worldState.enemyName.toUpperCase()+"."
             }
 
             reduceHealth(enemyMonHealthBar, damageDealt)
@@ -170,9 +212,32 @@ function setBattle(worldState) {
 
             phase = 'enemy-turn'
         }
+
+        // player heal move prompt
+        if (phase === 'player-turn2') {
+            const healthHealed = Math.random() * 170
+
+            if (healthHealed > 110) {
+                content.text = "MUSHROOM must've eaten something delicious\nbecause she healed a lot."
+            } else {
+                content.text = 'MUSHROOM ate a snack.'
+            }
+
+            increaseHealth(playerMonHealthBar, healthHealed)
+            makeMonFlash(playerMon)
+
+            phase = 'enemy-turn'
+        }
+
+
+
     })
 
     function colorizeHealthBar(healthBar) {
+        if (healthBar.width >= 200) {
+            healthBar.use(color(0, 200, 0))
+        }
+
         if (healthBar.width < 200) {
             healthBar.use(color(250, 150, 0))
         }
@@ -216,11 +281,11 @@ function setBattle(worldState) {
             playerMon.fainted = true
             setTimeout(() => {
                 content.text = 'You rush to get MUSHROOM healed!'
-            }, 1000)
+            }, 1500)
             setTimeout(() => {
-                worldState.playerPos = vec2(500,700)
-                go('world', worldState)
+                location.reload();
             }, 2000)
+
         }
     })
 }

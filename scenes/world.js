@@ -159,7 +159,7 @@ function setWorld(worldState) {
         camPos(player.pos)
         tick++
         if ((isKeyDown('down') || isKeyDown('up')) 
-        && tick % 20 === 0 
+        && tick % 14 === 0 
         && !player.isInDialogue) {
             player.flipX = !player.flipX
         }

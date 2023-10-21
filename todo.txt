@@ -1,0 +1,5 @@
+1. change sprites
+2. rename characters
+3. add third chichi move? swim?
+4. add boss
+5. add title screen
