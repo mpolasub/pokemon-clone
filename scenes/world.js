@@ -132,8 +132,9 @@ function setWorld(worldState) {
         }
     }
 
-    add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100,700), scale(4), 'cat'])
-
+    const catMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(1650,215), scale(4), 'cat'])
+    catMon.flipX = true
+    
     const spiderMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(500,400), scale(4), 'spider'])
     spiderMon.play('spider')
     spiderMon.flipX = true
@@ -141,8 +142,9 @@ function setWorld(worldState) {
     const centipedeMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100,100), scale(4), 'centipede'])
     centipedeMon.play('centipede')
 
-    const grassMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(1650, 215), scale(4), 'grass'])
+    const grassMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100, 700), scale(4), 'grass'])
     grassMon.play('grass')
+    grassMon.flipX = true
 
     add([ sprite('npc'), scale(4), pos(600,750), area(), body({isStatic: true}), 'npc'])
 
