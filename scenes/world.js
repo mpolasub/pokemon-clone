@@ -8,22 +8,23 @@ function setWorld(worldState) {
 
     const map = [
         addLevel([
-            '                 ',
-            ' cdddddddddddde  ',
-            ' 30000000000002  ',
-            ' 30000000000002  ',
-            ' 30000000000002  ',
-            ' 30030000008889  ',
-            ' 30030000024445  ',
-            ' 300a8888897777  ',
-            ' 30064444457777  ',
-            ' 30000000000000  ',
-            ' 30000000021111  ',
-            ' 3000000002      ',
-            ' 1111111111      ',
-            '      b          ',
-            '     b      b    ',
-            ' b             b '
+            '                  b   ',
+            ' cddddddddddddde      ',
+            ' 300000000000002      ',
+            ' 300000000000000jjjjj ',
+            ' 300000000000000lllll ',
+            ' 300000000000002      ',
+            ' 300030000008889      ',
+            ' 300030000024445      ',
+            ' 3000a8888897777      ',
+            ' 300064444457777      ',
+            ' 300000000000000   b  ',
+            ' 300000000021111      ',
+            ' 30000000002          ',
+            ' 11111111111      b   ',
+            '         b            ',
+            '  b          b        ',
+            '     b                '
         ], {
             tileWidth: 16,
             tileHeight: 16,
@@ -42,23 +43,27 @@ function setWorld(worldState) {
                 'b': () => makeTile('rock-water'),
                 'c': () => makeTile('grass-tl'),
                 'd': () => makeTile('grass-tm'),
-                'e': () => makeTile('grass-tr')
+                'e': () => makeTile('grass-tr'),
+                'j': () => makeTile('bridge-l'),
+                'k': () => makeTile('bridge-m'),
+                'l': () => makeTile('bridge-r')
             }
         }),
         addLevel([
-            '      12       ',
-            '      34       ',
-            ' 000    00  12 ',
-            ' 00   00    34 ',
-            ' 0    0        ',
-            '      0  0     ',
-            '           5   ',
-            '           6   ',
-            '     5         ',
-            '     6   0     ',
-            '               ',
-            '               ',
-            '               '
+            '                      ',
+            '       12             ',
+            '       34             ',
+            ' 00 0    00           ',
+            ' 0     00   12        ',
+            ' 0          34        ',
+            '          0           ',
+            '            5         ',
+            '            6         ',
+            '  0   5               ',
+            '  0   6   0           ',
+            '                      ',
+            '                      ',
+            '                      '
         ], {
             tileWidth: 16,
             tileHeight: 16,
@@ -73,20 +78,21 @@ function setWorld(worldState) {
             }
         }),
         addLevel([
-            ' 00000000000000 ',
-            '0     11       0',
-            '0           11 0',
-            '0           11 0',
-            '0              0',
-            '0   2          0',
-            '0   2      3333 ',
-            '0   2      0   0',
-            '0   3333333    0',
-            '0    0         0',
-            '0          0000 ',
-            '0          0    ',
-            ' 0000000000     ',
-            '                '
+            ' 000000000000000      ',
+            '0      11       0     ',
+            '0      11       00000 ',
+            '0                     ',
+            '0           11        ',
+            '0           11  00000 ',
+            '0    2          0     ',
+            '0    2      3333      ',
+            '0    2      0   0     ',
+            '0    3333333    0     ',
+            '0     0         0     ',
+            '0           0000      ',
+            '0           0         ',
+            ' 00000000000          ',
+            '                      '
         ], {
             tileWidth: 16,
             tileHeight: 16,
@@ -128,7 +134,7 @@ function setWorld(worldState) {
 
     add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100,700), scale(4), 'cat'])
 
-    const spiderMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(400,300), scale(4), 'spider'])
+    const spiderMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(500,400), scale(4), 'spider'])
     spiderMon.play('spider')
     spiderMon.flipX = true
 
