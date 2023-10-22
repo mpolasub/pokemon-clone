@@ -215,7 +215,7 @@ function setBattle(worldState) {
 
         // player heal move prompt
         if (phase === 'player-turn2') {
-            const healthHealed = Math.random() * 170
+            const healthHealed = Math.random() * 180
 
             if (healthHealed > 110) {
                 content.text = "MUSHROOM must've eaten something delicious\nbecause she healed a lot."
