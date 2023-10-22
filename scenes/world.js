@@ -8,23 +8,23 @@ function setWorld(worldState) {
 
     const map = [
         addLevel([
-            '                  b   ',
-            ' cddddddddddddde      ',
-            ' 300000000000002      ',
-            ' 300000000000000jjjjj ',
-            ' 300000000000000lllll ',
-            ' 300000000000002      ',
-            ' 300030000008889      ',
-            ' 300030000024445      ',
-            ' 3000a8888897777      ',
-            ' 300064444457777      ',
-            ' 300000000000000   b  ',
-            ' 300000000021111      ',
-            ' 30000000002          ',
-            ' 11111111111      b   ',
-            '         b            ',
-            '  b          b        ',
-            '     b                '
+            '       b          b             ',
+            ' cddddddddddddde      cddddde   ',
+            ' 300000000000002      3000002  b',
+            ' 300000000000000jjjjjj0000002   ',
+            ' 300000000000000llllll0000002   ',
+            ' 300000000000002      3000002   ',
+            ' 300030000008889      a888889 b ',
+            ' 300030000024445      6444445   ',
+            ' 3000a8888897777                ',
+            ' 300064444457777                ',
+            ' 300000000000000   b      b     ',
+            ' 300000000021111                ',
+            ' 30000000002                b   ',
+            ' 11111111111      b             ',
+            '         b                      ',
+            '  b          b                  ',
+            '     b                          '
         ], {
             tileWidth: 16,
             tileHeight: 16,
@@ -50,20 +50,20 @@ function setWorld(worldState) {
             }
         }),
         addLevel([
-            '                      ',
-            '       12             ',
-            '       34             ',
-            ' 00 0    00           ',
-            ' 0     00   12        ',
-            ' 0          34        ',
-            '          0           ',
-            '            5         ',
-            '            6         ',
-            '  0   5               ',
-            '  0   6   0           ',
-            '                      ',
-            '                      ',
-            '                      '
+            '                           5    ',
+            '       12                  6    ',
+            '       34             00        ',
+            ' 00 0    00                     ',
+            ' 0     00   12             0    ',
+            ' 0          34         0        ',
+            '          0                     ',
+            '            5                   ',
+            '            6                   ',
+            '  0   5                         ',
+            '  0   6   0                     ',
+            '                                ',
+            '                                ',
+            '                                '
         ], {
             tileWidth: 16,
             tileHeight: 16,
@@ -78,21 +78,21 @@ function setWorld(worldState) {
             }
         }),
         addLevel([
-            ' 000000000000000      ',
-            '0      11       0     ',
-            '0      11       00000 ',
-            '0                     ',
-            '0           11        ',
-            '0           11  00000 ',
-            '0    2          0     ',
-            '0    2      3333      ',
-            '0    2      0   0     ',
-            '0    3333333    0     ',
-            '0     0         0     ',
-            '0           0000      ',
-            '0           0         ',
-            ' 00000000000          ',
-            '                      '
+            ' 000000000000000      0000000   ',
+            '0      11       0    0     0 0  ',
+            '0      11       000000       0  ',
+            '0                            0  ',
+            '0           11               0  ',
+            '0           11  000000       0  ',
+            '0    2          0    0       0  ',
+            '0    2      3333      3333333   ',
+            '0    2      0   0               ',
+            '0    3333333    0               ',
+            '0     0         0               ',
+            '0           0000                ',
+            '0           0                   ',
+            ' 00000000000                    ',
+            '                                '
         ], {
             tileWidth: 16,
             tileHeight: 16,
@@ -141,14 +141,14 @@ function setWorld(worldState) {
     const centipedeMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100,100), scale(4), 'centipede'])
     centipedeMon.play('centipede')
 
-    const grassMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(900, 570), scale(4), 'grass'])
+    const grassMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(1650, 215), scale(4), 'grass'])
     grassMon.play('grass')
 
-    add([ sprite('npc'), scale(4), pos(600,700), area(), body({isStatic: true}), 'npc'])
+    add([ sprite('npc'), scale(4), pos(600,750), area(), body({isStatic: true}), 'npc'])
 
     const player = add([
         sprite('player-down'),
-        pos(500,700),
+        pos(500,750),
         scale(4),
         area(),
         body(),
