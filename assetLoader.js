@@ -10,7 +10,7 @@ function loadAssets() {
         'spider-mon': { x: 32, y: 16, width: 32, height: 32 },
         'centipede-mon': { x: 64, y: 16, width: 32, height: 32 },
         'grass-mon': { x: 0, y: 49, width: 32, height: 32 },
-        'mushroom-mon': { x: 32, y: 49, width: 32, height: 32 },
+        'CHICHI-mon': { x: 32, y: 49, width: 32, height: 32 },
         'mini-mons': { x: 0, y: 0, width: 128, height: 16, sliceX: 8, sliceY: 1,
             anims: { 'spider': 1, 'centipede': 2, 'grass': 3 }
         }

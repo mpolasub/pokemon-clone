@@ -25,7 +25,7 @@ function setBattle(worldState) {
     )
 
     const playerMon = add([
-        sprite('mushroom-mon'),
+        sprite('CHICHI-mon'),
         scale(8),
         pos(-100, 300),
         opacity(1),
@@ -49,7 +49,7 @@ function setBattle(worldState) {
     ])
 
     playerMonHealthBox.add([
-        text('MUSHROOM', {size: 32}),
+        text('CHICHI', {size: 32}),
         color(10,10,10),
         pos(10, 10)
     ])
@@ -101,7 +101,7 @@ function setBattle(worldState) {
     ])
 
     const content = box.add([
-        text('MUSHROOM is ready to battle!', { size: 42}),
+        text('CHICHI is ready to battle!', { size: 42}),
         color(10,10,10),
         pos(20,20)
     ])
@@ -125,7 +125,7 @@ function setBattle(worldState) {
                 healthBar.width = val
                 if(healthBar.width>=370) {
                     healthBar.width = 370
-                    content.text = "MUSHROOM is at max health."
+                    content.text = "CHICHI is at max health."
                 }
             },
             easings.easeInSine
@@ -202,9 +202,9 @@ function setBattle(worldState) {
             const damageDealt = Math.random() * 170 + 20
 
             if (damageDealt > 150) {
-                content.text = 'MUSHROOM bit '+worldState.enemyName.toUpperCase()+" IN THE FACE."
+                content.text = 'CHICHI bit '+worldState.enemyName.toUpperCase()+" IN THE FACE."
             } else {
-                content.text = 'MUSHROOM bit '+worldState.enemyName.toUpperCase()+"."
+                content.text = 'CHICHI bit '+worldState.enemyName.toUpperCase()+"."
             }
 
             reduceHealth(enemyMonHealthBar, damageDealt)
@@ -218,9 +218,9 @@ function setBattle(worldState) {
             const healthHealed = Math.random() * 180
 
             if (healthHealed > 110) {
-                content.text = "MUSHROOM must've eaten something delicious\nbecause she healed a lot."
+                content.text = "CHICHI must've eaten something delicious\nbecause she healed a lot."
             } else {
-                content.text = 'MUSHROOM ate a snack.'
+                content.text = 'CHICHI ate a snack.'
             }
 
             increaseHealth(playerMonHealthBar, healthHealed)
@@ -267,7 +267,7 @@ function setBattle(worldState) {
             content.text = worldState.enemyName.toUpperCase() + ' fainted!'
             enemyMon.fainted = true
             setTimeout(() => {
-                content.text = 'MUSHROOM won the battle!'
+                content.text = 'CHICHI won the battle!'
             }, 1000)
             setTimeout(() => {
                 worldState.faintedMons.push(worldState.enemyName)
@@ -277,10 +277,10 @@ function setBattle(worldState) {
 
         if (playerMonHealthBar.width < 0 && !playerMon.fainted) {
             makeMonDrop(playerMon)
-            content.text = 'MUSHROOM fainted!'
+            content.text = 'CHICHI fainted!'
             playerMon.fainted = true
             setTimeout(() => {
-                content.text = 'You rush to get MUSHROOM healed!'
+                content.text = 'You rush to get CHICHI healed!'
             }, 1500)
             setTimeout(() => {
                 location.reload();
