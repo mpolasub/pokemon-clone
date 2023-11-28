@@ -57,10 +57,10 @@ function setWorld(worldState) {
             ' 0     00   12             0    ',
             ' 0          34         0        ',
             '          0                     ',
-            '            5                   ',
-            '            6                   ',
-            '  0   5                         ',
-            '  0   6   0                     ',
+            '                                ',
+            '                                ',
+            '  0   5       5                 ',
+            '  0   6   0   6                 ',
             '                                ',
             '                                ',
             '                                '
@@ -84,11 +84,11 @@ function setWorld(worldState) {
             '0                            0  ',
             '0           11               0  ',
             '0           11  000000       0  ',
-            '0    2          0    0       0  ',
+            '0    2         0     0       0  ',
             '0    2      3333      3333333   ',
             '0    2      0   0               ',
-            '0    3333333    0               ',
-            '0     0         0               ',
+            '0    3333333  1 0               ',
+            '0     0       1 0               ',
             '0           0000                ',
             '0           0                   ',
             ' 00000000000                    ',
@@ -132,19 +132,19 @@ function setWorld(worldState) {
         }
     }
 
-    const catMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(1650,215), scale(4), 'cat'])
-    catMon.flipX = true
+    const laptopMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(1650,215), scale(4), 'Crashy laptop'])
+    laptopMon.flipX = true
     
-    const spiderMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(500,400), scale(4), 'spider'])
-    spiderMon.play('spider')
-    spiderMon.flipX = true
+    const ghostMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(500,400), scale(4), 'Scary ghost'])
+    ghostMon.play('Scary ghost')
+    ghostMon.flipX = true
 
-    const centipedeMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100,100), scale(4), 'grass'])
-    centipedeMon.play('grass')
+    const breadMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100,700), scale(4), 'Loaf bread'])
+    breadMon.play('Loaf bread')
+    breadMon.flipX = true
 
-    const grassMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100, 700), scale(4), 'centipede'])
-    grassMon.play('centipede')
-    grassMon.flipX = true
+    const racistMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100, 100), scale(4), 'Racist man'])
+    racistMon.play('Racist man')
 
     add([ sprite('npc'), scale(4), pos(600,750), area(), body({isStatic: true}), 'npc'])
 
@@ -244,7 +244,7 @@ function setWorld(worldState) {
             pos(150, 500),
             fixed()
         ])
-        const dialogue = "Defeat all monsters on this island and you'll become the champion!"
+        const dialogue = "Beat up some enemies and come back when you're done!"
         const content = dialogueBox.add([
             text('', 
             {
@@ -260,7 +260,7 @@ function setWorld(worldState) {
         if (worldState.faintedMons < 4) {
             content.text = dialogue
         } else {
-            content.text = "You're the champion!"
+            content.text = "You did it, baby! I love you!"
         }
 
         onUpdate(() => {
@@ -289,8 +289,8 @@ function setWorld(worldState) {
 
 
 
-    onCollideWithPlayer('cat', player, worldState)
-    onCollideWithPlayer('spider', player, worldState)
-    onCollideWithPlayer('centipede', player, worldState)
-    onCollideWithPlayer('grass', player, worldState)
+    onCollideWithPlayer('Crashy laptop', player, worldState)
+    onCollideWithPlayer('Scary ghost', player, worldState)
+    onCollideWithPlayer('Loaf bread', player, worldState)
+    onCollideWithPlayer('Racist man', player, worldState)
 }

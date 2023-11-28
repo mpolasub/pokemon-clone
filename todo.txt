@@ -1,7 +1,6 @@
-1. change sprites
-2. rename characters
-3. add third chichi move? swim?
-4. add boss
-5. add title screen
+1. attack animation
+2. add third chichi move? swim?
+3. add boss?
+4. add title screen
 
-things rachel hates: racist, loaf of bread, "scary" ghost
+things rachel hates: grass-racist man, centipede-loaf of bread, spider-"scary" ghost
