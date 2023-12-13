@@ -260,7 +260,7 @@ function setWorld(worldState) {
         if (worldState.faintedMons < 4) {
             content.text = dialogue
         } else {
-            content.text = "You did it, baby! I love you!"
+            content.text = "You did it! I love you, my princess!\n\n                             -Matt"
         }
 
         onUpdate(() => {
