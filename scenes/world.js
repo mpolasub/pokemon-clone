@@ -289,8 +289,10 @@ function setWorld(worldState) {
 
 
 
+
     onCollideWithPlayer('Crashy laptop', player, worldState)
     onCollideWithPlayer('Scary ghost', player, worldState)
     onCollideWithPlayer('Loaf bread', player, worldState)
     onCollideWithPlayer('Racist man', player, worldState)
 }
+

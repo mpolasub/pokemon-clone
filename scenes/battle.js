@@ -183,11 +183,30 @@ function setBattle(worldState) {
         }
 
         if (phase === 'enemy-turn') {
-            content.text = worldState.enemyName.toUpperCase() + ' attacks!'
+            var attack
+            var crit
+            if(worldState.enemyName == "Racist man") {
+                attack = " said something racist!"
+                crit = " used OFFENSIVE RACIAL SLUR. \nIt's a critical hit!"
+            }
+            else if(worldState.enemyName == "Crashy laptop") {
+                attack = " used CRASH!"
+                crit = " shut down with an unsaved essay.. \nIt's a critical hit!"
+            }
+            else if(worldState.enemyName == "Scary ghost") {
+                attack = " used SPOOK!"
+                crit = " used SCARY FACE. It's a critical hit!"
+            }
+            else {
+                attack = " slapped CHICHI in the face!"
+                crit = " covered you with mold! It's a critical hit!"
+            }
+            
+            content.text = worldState.enemyName.toUpperCase() + attack
             const damageDealt = Math.random() * 230
 
             if (damageDealt > 150) {
-                content.text = worldState.enemyName.toUpperCase() + ' attacks! ' + "It's a critical hit!"
+                content.text = worldState.enemyName.toUpperCase() + crit
             }
 
             reduceHealth(playerMonHealthBar, damageDealt)
