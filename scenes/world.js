@@ -272,7 +272,7 @@ function setWorld(worldState) {
     })
 
     function flashScreen() {
-        const flash = add([rect(1280, 720), color(10,10,10), fixed(), opacity(0)])
+        const flash = add([rect(window.innerWidth, window.innerHeight), color(10,10,10), fixed(), opacity(0)])
         tween(flash.opacity, 1, 0.5, (val) => flash.opacity = val, easings.easeInBounce)
     }
 

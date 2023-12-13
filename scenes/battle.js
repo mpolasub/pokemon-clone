@@ -95,7 +95,7 @@ function setBattle(worldState) {
     tween(enemyMonHealthBox.pos.x, 100, 0.3, (val) => enemyMonHealthBox.pos.x = val, easings.easeInSine)
 
     const box = add([
-        rect(1300, 300),
+        rect(window.innerWidth, 300),
         outline(4),
         pos(-2, 530)
     ])
