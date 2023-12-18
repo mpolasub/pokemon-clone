@@ -1,4 +1,17 @@
 function setWorld(worldState) {
+    
+    function loadSong(indexValue){
+        if (indexValue == 1) {
+            loadSound("music", "music/parasail.mp3");
+        }
+        if (indexValue == 2) {
+            loadSound("music", "music/pokemon_battle.mp3");
+        }
+      }
+
+    loadSong(1);
+    music = play("music");
+
     function makeTile(type) {
         return [
             sprite('tile'),
@@ -236,6 +249,7 @@ function setWorld(worldState) {
     }
 
     player.onCollide('npc', () => {
+
         player.isInDialogue = true
         const dialogueBoxFixedContainer = add([fixed()])
         const dialogueBox = dialogueBoxFixedContainer.add([
@@ -278,6 +292,9 @@ function setWorld(worldState) {
 
     function onCollideWithPlayer(enemyName, player, worldState) {
         player.onCollide(enemyName, () => {
+
+            // loadSong(2);
+            // music  = play("music");
             flashScreen()
             setTimeout(() => {
                 worldState.playerPos = player.pos
