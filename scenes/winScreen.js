@@ -1,7 +1,8 @@
 function setWin(worldState) {
     
     var sound = new Howl({
-        src: ['music/gggalaxy.mp3']
+        src: ['music/gggalaxy.mp3'],
+        loop: true
     });
 
     sound.play()
