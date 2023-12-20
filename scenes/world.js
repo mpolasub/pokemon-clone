@@ -1,16 +1,5 @@
 function setWorld(worldState) {
-    
-    function loadSong(indexValue){
-        if (indexValue == 1) {
-            loadSound("music", "music/parasail.mp3");
-        }
-        if (indexValue == 2) {
-            loadSound("music", "music/pokemon_battle.mp3");
-        }
-      }
 
-    loadSong(1);
-    music = play("music");
 
     function makeTile(type) {
         return [
@@ -239,7 +228,16 @@ function setWorld(worldState) {
     if (!worldState) {
         worldState = {
             playerPos : player.pos,
-            faintedMons: []
+            faintedMons: [],
+            ticker: 1,
+            sound: new Howl({
+                src: ['music/parasail.mp3'],
+                loop: true
+            }),
+            battle_sound: new Howl({
+            src: ['music/pokemon_battle.mp3'],
+            volume: 0.6
+            })
         }
     }
 
@@ -250,6 +248,12 @@ function setWorld(worldState) {
 
     player.onCollide('npc', () => {
 
+
+        // if (worldState.ticker == 1) {
+        //     worldState.ticker += 1;
+        //     worldState.sound.play();
+        // }
+
         player.isInDialogue = true
         const dialogueBoxFixedContainer = add([fixed()])
         const dialogueBox = dialogueBoxFixedContainer.add([
@@ -258,7 +262,7 @@ function setWorld(worldState) {
             pos(150, 500),
             fixed()
         ])
-        const dialogue = "Beat up some enemies and come back when you're done!"
+        const dialogue = "There's bad stuff scattered around the island. Defeat all 4 and come back when you're done!"
         const content = dialogueBox.add([
             text('', 
             {
@@ -271,16 +275,20 @@ function setWorld(worldState) {
             fixed()
         ])
 
-        if (worldState.faintedMons < 4) {
+        if (worldState.faintedMons.length < 4) {
             content.text = dialogue
         } else {
-            content.text = "You did it! I love you, my princess!\n\n                             -Matt"
+            content.text = "You did it! I love you, my princess!\nPress 'ENTER' to go to the next room.\n                             -Matt"
         }
 
         onUpdate(() => {
             if (isKeyDown('space')) {
                 destroy(dialogueBox)
-                player.isInDialogue = false
+                player.isInDialogue = false 
+            }
+            if (isKeyDown('enter')) {
+                worldState.sound.pause()
+                go('winScreen')
             }
         })
     })
@@ -292,9 +300,8 @@ function setWorld(worldState) {
 
     function onCollideWithPlayer(enemyName, player, worldState) {
         player.onCollide(enemyName, () => {
-
-            // loadSong(2);
-            // music  = play("music");
+            worldState.sound.pause()
+            worldState.battle_sound.play()
             flashScreen()
             setTimeout(() => {
                 worldState.playerPos = player.pos
@@ -304,7 +311,10 @@ function setWorld(worldState) {
         })
     }
 
-
+    if (worldState.ticker == 1) {
+        worldState.ticker += 1;
+        worldState.sound.play();
+    }
 
 
     onCollideWithPlayer('Crashy laptop', player, worldState)

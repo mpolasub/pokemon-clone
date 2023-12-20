@@ -234,7 +234,7 @@ function setBattle(worldState) {
 
         // player heal move prompt
         if (phase === 'player-turn2') {
-            const healthHealed = Math.random() * 180
+            const healthHealed = Math.random() * 180 + 20
 
             if (healthHealed > 110) {
                 content.text = "CHICHI must've eaten something delicious\nbecause she healed a lot."
@@ -290,6 +290,8 @@ function setBattle(worldState) {
             }, 1000)
             setTimeout(() => {
                 worldState.faintedMons.push(worldState.enemyName)
+                worldState.battle_sound.stop()
+                worldState.sound.play()
                 go('world', worldState)
             }, 2000)
         }

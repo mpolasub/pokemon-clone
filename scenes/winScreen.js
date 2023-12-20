@@ -1,7 +1,10 @@
-function setWorld(worldState) {
+function setWin(worldState) {
     
-    loadSound("music", "music/bubblaine.mp3");
-    music = play("music");
+    var sound = new Howl({
+        src: ['music/gggalaxy.mp3']
+    });
+
+    sound.play()
 
     function makeTile(type) {
         return [
@@ -12,35 +15,35 @@ function setWorld(worldState) {
 
     const map = [
         addLevel([
-            '       b          b             ',
-            ' cddddddddddddde      cddddde   ',
-            ' 300000000000002      3000002  b',
-            ' 300000000000000jjjjjj0000002   ',
-            ' 300000000000000llllll0000002   ',
-            ' 300000000000002      3000002   ',
-            ' 300030000008889      a888889 b ',
-            ' 300030000024445      6444445   ',
-            ' 3000a8888897777                ',
-            ' 300064444457777                ',
-            ' 300000000000000   b      b     ',
-            ' 300000000021111                ',
-            ' 30000000002                b   ',
-            ' 11111111111      b             ',
-            '         b                      ',
-            '  b          b                  ',
-            '     b                          '
+            '       b          ',
+            ' cddddddddddddde  ',
+            ' 300000000000002  ',
+            ' 300000000000000jj',
+            ' 300000000000000ll',
+            ' 300000000000002  ',
+            ' 300030000008889  ',
+            ' 300030000024445  ',
+            ' 3000a8888897777  ',
+            ' 300064444457777  ',
+            ' 300000000000000  ',
+            ' 300000000021111  ',
+            ' 30000000002      ',
+            ' 11111111111      ',
+            '         b        ',
+            '  b          b    ',
+            '     b            '
         ], {
             tileWidth: 16,
             tileHeight: 16,
             tiles: {
-                '0': () => makeTile('grass-m'),
+                '7': () => makeTile('grass-m'),
                 '1': () => makeTile('grass-water'),
                 '2': () => makeTile('grass-r'),
                 '3': () => makeTile('grass-l'),
                 '4': () => makeTile('ground-m'),
                 '5': () => makeTile('ground-r'),
                 '6': () => makeTile('ground-l'),
-                '7': () => makeTile('sand-1'),
+                '0': () => makeTile('sand-1'),
                 '8': () => makeTile('grass-mb'),
                 '9': () => makeTile('grass-br'),
                 'a': () => makeTile('grass-bl'),
@@ -54,20 +57,20 @@ function setWorld(worldState) {
             }
         }),
         addLevel([
-            '                           5    ',
-            '       12                  6    ',
-            '       34             00        ',
-            ' 00 0    00                     ',
-            ' 0     00   12             0    ',
-            ' 0          34         0        ',
-            '          0                     ',
-            '                                ',
-            '                                ',
-            '  0   5       5                 ',
-            '  0   6   0   6                 ',
-            '                                ',
-            '                                ',
-            '                                '
+            '                  ',
+            '       12         ',
+            '       34         ',
+            ' 00 0    00       ',
+            ' 0     00   12    ',
+            ' 0          34    ',
+            '          0       ',
+            '                  ',
+            '                  ',
+            '  0   5       5   ',
+            '  0   6   0   6   ',
+            '                  ',
+            '                  ',
+            '                  '
         ], {
             tileWidth: 16,
             tileHeight: 16,
@@ -82,21 +85,21 @@ function setWorld(worldState) {
             }
         }),
         addLevel([
-            ' 000000000000000      0000000   ',
-            '0      11       0    0     0 0  ',
-            '0      11       000000       0  ',
-            '0                            0  ',
-            '0           11               0  ',
-            '0           11  000000       0  ',
-            '0    2         0     0       0  ',
-            '0    2      3333      3333333   ',
-            '0    2      0   0               ',
-            '0    3333333  1 0               ',
-            '0     0       1 0               ',
-            '0           0000                ',
-            '0           0                   ',
-            ' 00000000000                    ',
-            '                                '
+            ' 000000000000000  ',
+            '0      11       0 ',
+            '0      11       00',
+            '0                 ',
+            '0           11    ',
+            '0           11  00',
+            '0    2         0  ',
+            '0    2      3333  ',
+            '0    2      0   0 ',
+            '0    3333333  1 0 ',
+            '0     0       1 0 ',
+            '0           0000  ',
+            '0           0     ',
+            ' 00000000000      ',
+            '                  '
         ], {
             tileWidth: 16,
             tileHeight: 16,
@@ -136,21 +139,6 @@ function setWorld(worldState) {
         }
     }
 
-    const laptopMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(1650,215), scale(4), 'Crashy laptop'])
-    laptopMon.flipX = true
-    
-    const ghostMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(500,400), scale(4), 'Scary ghost'])
-    ghostMon.play('Scary ghost')
-    ghostMon.flipX = true
-
-    const breadMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100,700), scale(4), 'Loaf bread'])
-    breadMon.play('Loaf bread')
-    breadMon.flipX = true
-
-    const racistMon = add([sprite('mini-mons'), area(), body({isStatic: true}), pos(100, 100), scale(4), 'Racist man'])
-    racistMon.play('Racist man')
-
-    add([ sprite('npc'), scale(4), pos(600,750), area(), body({isStatic: true}), 'npc'])
 
     const player = add([
         sprite('player-down'),
@@ -227,17 +215,7 @@ function setWorld(worldState) {
         player.stop()
     })
 
-    if (!worldState) {
-        worldState = {
-            playerPos : player.pos,
-            faintedMons: []
-        }
-    }
 
-    player.pos = vec2(worldState.playerPos)
-    for (const faintedMon of worldState.faintedMons) {
-        destroy(get(faintedMon)[0])
-    }
 
     player.onCollide('npc', () => {
 
@@ -249,7 +227,7 @@ function setWorld(worldState) {
             pos(150, 500),
             fixed()
         ])
-        const dialogue = "Beat up some enemies and come back when you're done!"
+        const dialogue = "nice"
         const content = dialogueBox.add([
             text('', 
             {
@@ -281,26 +259,7 @@ function setWorld(worldState) {
         tween(flash.opacity, 1, 0.5, (val) => flash.opacity = val, easings.easeInBounce)
     }
 
-    function onCollideWithPlayer(enemyName, player, worldState) {
-        player.onCollide(enemyName, () => {
-
-            // loadSong(2);
-            // music  = play("music");
-            flashScreen()
-            setTimeout(() => {
-                worldState.playerPos = player.pos
-                worldState.enemyName = enemyName
-                go('battle', worldState) 
-            }, 1000)
-        })
-    }
 
 
-
-
-    onCollideWithPlayer('Crashy laptop', player, worldState)
-    onCollideWithPlayer('Scary ghost', player, worldState)
-    onCollideWithPlayer('Loaf bread', player, worldState)
-    onCollideWithPlayer('Racist man', player, worldState)
 }
 

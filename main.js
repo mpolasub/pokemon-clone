@@ -10,6 +10,7 @@ loadAssets();
 
 
 
+scene('winScreen', (worldState) => setWin(worldState));
 scene('world', (worldState) => setWorld(worldState));
 scene('battle', (worldState) => setBattle(worldState));
 
