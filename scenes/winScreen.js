@@ -2,7 +2,9 @@ function setWin(worldState) {
     
     var sound = new Howl({
         src: ['music/gggalaxy.mp3'],
+        volume: 0.7,
         loop: true
+        
     });
 
     sound.play()
@@ -16,31 +18,31 @@ function setWin(worldState) {
 
     const map = [
         addLevel([
-            '       b          ',
+            '                  ',
             ' cddddddddddddde  ',
             ' 300000000000002  ',
-            ' 300000000000000jj',
-            ' 300000000000000ll',
             ' 300000000000002  ',
-            ' 300030000008889  ',
-            ' 300030000024445  ',
-            ' 3000a8888897777  ',
-            ' 300064444457777  ',
-            ' 300000000000000  ',
-            ' 300000000021111  ',
-            ' 30000000002      ',
-            ' 11111111111      ',
-            '         b        ',
-            '  b          b    ',
-            '     b            '
+            ' 300000000000002  ',
+            ' 300000000000002  ',
+            ' 300000000000002  ',
+            ' 300000000000002  ',
+            ' 300000000000002  ',
+            ' 300000000000002  ',
+            ' 300000000000002  ',
+            ' 300000000000002  ',
+            ' 300000000000002  ',
+            ' 111111111111111  ',
+            '                  ',
+            '                  ',
+            '                  '
         ], {
             tileWidth: 16,
             tileHeight: 16,
             tiles: {
                 '7': () => makeTile('grass-m'),
-                '1': () => makeTile('grass-water'),
-                '2': () => makeTile('grass-r'),
-                '3': () => makeTile('grass-l'),
+                '1': () => makeTile('sand-bottom'),
+                '2': () => makeTile('sand-r'),
+                '3': () => makeTile('sand-l'),
                 '4': () => makeTile('ground-m'),
                 '5': () => makeTile('ground-r'),
                 '6': () => makeTile('ground-l'),
@@ -49,9 +51,9 @@ function setWin(worldState) {
                 '9': () => makeTile('grass-br'),
                 'a': () => makeTile('grass-bl'),
                 'b': () => makeTile('rock-water'),
-                'c': () => makeTile('grass-tl'),
-                'd': () => makeTile('grass-tm'),
-                'e': () => makeTile('grass-tr'),
+                'c': () => makeTile('sand-tl'),
+                'd': () => makeTile('sand-tm'),
+                'e': () => makeTile('sand-tr'),
                 'j': () => makeTile('bridge-l'),
                 'k': () => makeTile('bridge-m'),
                 'l': () => makeTile('bridge-r')
@@ -59,11 +61,11 @@ function setWin(worldState) {
         }),
         addLevel([
             '                  ',
-            '       12         ',
-            '       34         ',
+            '                  ',
+            '                  ',
             ' 00 0    00       ',
-            ' 0     00   12    ',
-            ' 0          34    ',
+            ' 0     00         ',
+            ' 0                ',
             '          0       ',
             '                  ',
             '                  ',
@@ -76,30 +78,30 @@ function setWin(worldState) {
             tileWidth: 16,
             tileHeight: 16,
             tiles: {
-                '0': () => makeTile(),
+                '0': () => makeTile('rock'),
                 '1': () => makeTile('bigtree-pt1'),
                 '2': () => makeTile('bigtree-pt2'),
                 '3': () => makeTile('bigtree-pt3'),
                 '4': () => makeTile('bigtree-pt4'),
-                '5': () => makeTile('tree-t'),
-                '6': () => makeTile('tree-b'),
+                '5': () => makeTile('cactus-t'),
+                '6': () => makeTile('cactus-b'),
             }
         }),
         addLevel([
             ' 000000000000000  ',
-            '0      11       0 ',
-            '0      11       00',
-            '0                 ',
-            '0           11    ',
-            '0           11  00',
-            '0    2         0  ',
-            '0    2      3333  ',
-            '0    2      0   0 ',
-            '0    3333333  1 0 ',
-            '0     0       1 0 ',
-            '0           0000  ',
-            '0           0     ',
-            ' 00000000000      ',
+            '0               0 ',
+            '0               0 ',
+            '0               0 ',
+            '0               0 ',
+            '0               0 ',
+            '0               0 ',
+            '0               0 ',
+            '0               0 ',
+            '0 1   2         0 ',
+            '0 1   3         0 ',
+            '0               0 ',
+            '0               0 ',
+            ' 2222222222222222 ',
             '                  '
         ], {
             tileWidth: 16,
@@ -112,18 +114,19 @@ function setWin(worldState) {
                 '1': () => [
                     area({
                         shape: new Rect(vec2(0), 8, 8),
-                        offset: vec2(4, 4)
+                        offset: vec2(4, 3)
                     }),
                     body({isStatic: true})
                 ],
                 '2': () => [
-                    area({shape: new Rect(vec2(0), 2, 16)}),
+                    area({shape: new Rect(vec2(0), 16, 16),
+                        offset: vec2(0, 4)}),
                     body({isStatic: true})
                 ],
                 '3': () => [
                     area({
-                    shape: new Rect(vec2(0), 16, 20),
-                    offset: vec2(0, -4)
+                    shape: new Rect(vec2(0), 16, 2),
+                    offset: vec2(0, 0)
                     }),
                     body({isStatic: true})
                 ]
@@ -143,7 +146,7 @@ function setWin(worldState) {
 
     const player = add([
         sprite('player-down'),
-        pos(500,750),
+        pos(450,750),
         scale(4),
         area(),
         body(),
@@ -216,6 +219,8 @@ function setWin(worldState) {
         player.stop()
     })
 
+    add([ sprite('npc'), scale(4), pos(600,750), area(), body({isStatic: true}), 'npc'])
+
 
 
     player.onCollide('npc', () => {
@@ -241,11 +246,7 @@ function setWin(worldState) {
             fixed()
         ])
 
-        if (worldState.faintedMons < 4) {
-            content.text = dialogue
-        } else {
-            content.text = "You did it! I love you, my princess!\n\n                             -Matt"
-        }
+        content.text = dialogue
 
         onUpdate(() => {
             if (isKeyDown('space')) {

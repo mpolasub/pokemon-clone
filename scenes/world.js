@@ -152,7 +152,7 @@ function setWorld(worldState) {
 
     const player = add([
         sprite('player-down'),
-        pos(500,750),
+        pos(450,750),
         scale(4),
         area(),
         body(),
@@ -249,11 +249,6 @@ function setWorld(worldState) {
     player.onCollide('npc', () => {
 
 
-        // if (worldState.ticker == 1) {
-        //     worldState.ticker += 1;
-        //     worldState.sound.play();
-        // }
-
         player.isInDialogue = true
         const dialogueBoxFixedContainer = add([fixed()])
         const dialogueBox = dialogueBoxFixedContainer.add([
@@ -278,7 +273,7 @@ function setWorld(worldState) {
         if (worldState.faintedMons.length < 4) {
             content.text = dialogue
         } else {
-            content.text = "You did it! I love you, my princess!\nPress 'ENTER' to go to the next room.\n                             -Matt"
+            content.text = "You did it! I love you, my princess!\nPress 'ENTER' to proceed.\n                             -Matt"
         }
 
         onUpdate(() => {

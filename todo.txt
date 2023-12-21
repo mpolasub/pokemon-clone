@@ -1,7 +1,4 @@
-1. attack animation
-2. add third chichi move? swim?
-3. add boss?
-4. add title screen
-5. add win lobby (map with spacex rocket and gusty garden galaxy playing in the bg)
+1. link game to github
+2. add win lobby (map with spacex rocket and gusty garden galaxy playing in the bg)
 
 things rachel hates: grass-racist man, centipede-loaf of bread, spider-"scary" ghost

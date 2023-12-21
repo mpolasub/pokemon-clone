@@ -42,7 +42,16 @@ function loadAssets() {
                 'rock-water': 60,
                 'bridge-l': 36,
                 'bridge-m': 44,
-                'bridge-r': 52
+                'bridge-r': 52,
+                'sand-bottom': 32,
+                'sand-tl': 49,
+                'sand-tm': 50,
+                'sand-tr': 51,
+                'cactus-t': 3,
+                'cactus-b': 11,
+                'sand-l': 24,
+                'sand-r': 16,
+                'rock': 8
             }
         }
     })
