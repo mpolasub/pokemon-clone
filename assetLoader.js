@@ -53,6 +53,7 @@ function loadAssets() {
                 'sand-r': 16,
                 'rock': 8
             }
-        }
+        },
+        'starship': { x: 82, y: 0, width: 45, height: 128 }
     })
 }

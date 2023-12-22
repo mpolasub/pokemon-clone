@@ -252,9 +252,9 @@ function setWorld(worldState) {
         player.isInDialogue = true
         const dialogueBoxFixedContainer = add([fixed()])
         const dialogueBox = dialogueBoxFixedContainer.add([
-            rect(1000, 200),
+            rect(window.innerWidth, window.innerHeight/4 + 50),
             outline(5),
-            pos(150, 500),
+            pos(0, window.innerHeight - window.innerHeight/4 - 50),
             fixed()
         ])
         const dialogue = "There's bad stuff scattered around the island. Defeat all 4 and come back when you're done!"

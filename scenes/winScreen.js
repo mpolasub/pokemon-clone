@@ -62,16 +62,16 @@ function setWin(worldState) {
         addLevel([
             '                  ',
             '                  ',
+            '  0               ',
+            '    5         0   ',
+            '    6             ',
             '                  ',
-            ' 00 0    00       ',
-            ' 0     00         ',
-            ' 0                ',
-            '          0       ',
+            '             5    ',
+            '   0         6    ',
             '                  ',
-            '                  ',
-            '  0   5       5   ',
-            '  0   6   0   6   ',
-            '                  ',
+            '      5    0      ',
+            '      6           ',
+            '  0           0   ',
             '                  ',
             '                  '
         ], {
@@ -90,16 +90,16 @@ function setWin(worldState) {
         addLevel([
             ' 000000000000000  ',
             '0               0 ',
+            '0 1             0 ',
+            '0   2         1 0 ',
+            '0   3           0 ',
             '0               0 ',
+            '0            2  0 ',
+            '0  1         3  0 ',
             '0               0 ',
-            '0               0 ',
-            '0               0 ',
-            '0               0 ',
-            '0               0 ',
-            '0               0 ',
-            '0 1   2         0 ',
-            '0 1   3         0 ',
-            '0               0 ',
+            '0     2    1    0 ',
+            '0     3         0 ',
+            '0 1           1 0 ',
             '0               0 ',
             ' 2222222222222222 ',
             '                  '
@@ -221,19 +221,19 @@ function setWin(worldState) {
 
     add([ sprite('npc'), scale(4), pos(600,750), area(), body({isStatic: true}), 'npc'])
 
-
+    add([ sprite('starship'), scale(4), pos(450,-50), area(), body({isStatic: true})])
 
     player.onCollide('npc', () => {
 
         player.isInDialogue = true
         const dialogueBoxFixedContainer = add([fixed()])
         const dialogueBox = dialogueBoxFixedContainer.add([
-            rect(1000, 200),
+            rect(window.innerWidth, window.innerHeight/4 + 50),
             outline(5),
-            pos(150, 500),
+            pos(0, window.innerHeight - window.innerHeight/4 - 50),
             fixed()
         ])
-        const dialogue = "nice"
+        const dialogue = "I hope you enjoyed my game! I will miss you a lot when you go to Texas. Have fun at Starbase <3 -Matt"
         const content = dialogueBox.add([
             text('', 
             {
